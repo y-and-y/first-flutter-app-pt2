@@ -1,5 +1,3 @@
-// Add a new route to hold the favorites.
-
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
@@ -10,6 +8,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Startup Name Generator',
+      theme: new ThemeData(
+        primaryColor: Colors.white,
+      ),
       home: new RandomWords(),
     );
   }
@@ -82,7 +83,7 @@ class RandomWordsState extends State<RandomWords> {
       new MaterialPageRoute<void>(
         builder: (BuildContext context) {
           final Iterable<ListTile> tiles = _saved.map(
-                (WordPair pair) {
+            (WordPair pair) {
               return new ListTile(
                 title: new Text(
                   pair.asPascalCase,
@@ -93,9 +94,9 @@ class RandomWordsState extends State<RandomWords> {
           );
           final List<Widget> divided = ListTile
               .divideTiles(
-            context: context,
-            tiles: tiles,
-          )
+                context: context,
+                tiles: tiles,
+              )
               .toList();
           return new Scaffold(
             appBar: new AppBar(
@@ -103,7 +104,6 @@ class RandomWordsState extends State<RandomWords> {
             ),
             body: new ListView(children: divided),
           );
-
         },
       ),
     );
